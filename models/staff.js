@@ -39,20 +39,20 @@ export default (sequelize, DataTypes) => {
 
     });
     Staff.associate = (models)=>{
-        Staff.belongsTo(models.StaffType),{
+        Staff.belongsTo(models.StaffType,{
             foreignKey:{
                 name: 'fk_staff_type_id',
                 field: 'staff_type_id',
                 foreignKeyConstraint: true,
             },
-        };
-        Staff.belongsTo(models.Branch),{
+        });
+        Staff.belongsTo(models.Branch,{
             foreignKey:{
                 name: 'fk_branch_id',
                 field: 'branch_id',
                 foreignKeyConstraint: true,
             },
-        };
+        });
 
     }
     return Staff;

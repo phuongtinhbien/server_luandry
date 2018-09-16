@@ -27,6 +27,20 @@ export default (sequelize, DataTypes) => {
               name: 'fk_wash_wash_bag_id',
               field: 'wash_bag_id',
             }
+        }),
+        WashBag.belongsToMany(models.Receipt,{
+            through: 'receipt_wash_bag',
+            foreignKey: {
+              name: 'fk_receipt_wash_bag_wash_bag_id',
+              field: 'wash_bag_id',
+            }
+        }),
+        WashBag.belongsToMany(models.Dryer,{
+            through: 'dry',
+            foreignKey: {
+              name: 'fk_dry_dry_bag_id',
+              field: 'dry_bag_id',
+            }
         })
 
     }  

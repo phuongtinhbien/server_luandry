@@ -23,15 +23,31 @@ export default (sequelize, DataTypes) => {
         branch_no: DataTypes.STRING(200)
     });
     Branch.associate = (models)=>{
-        Branch.belongsTo(models.Store),{
+        Branch.belongsTo(models.Store,{
             foreignKey:{
                 name: 'fk_branch_store_id',
                 field: 'store_id',
                 foreignKeyConstraint: true,
             },
-        },
+        }),
         Branch.hasMany(models.WashingMachine),
-        Branch.hasMany(models.Dryer)
+        Branch.hasMany(models.Dryer),
+        Branch.belongsToMany(models.ServiceType,{
+            through: 'service_type_branch',
+            foreignKey: {
+              name: 'fk_service_type_branch_branch_id',
+              field: 'branch_id',
+              foreignKeyConstraint: true,
+            }
+        }),
+        Branch.belongsToMany(models.Promotion,{
+            through: 'promotion_branch',
+            foreignKey: {
+              name: 'fk_promotion_branch_branch_id',
+              field: 'branch_id',
+              foreignKeyConstraint: true,
+            }
+        })
     }
 
 

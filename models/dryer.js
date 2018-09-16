@@ -21,13 +21,20 @@ export default (sequelize, DataTypes) => {
         buyer : DataTypes.INTEGER
     });
     Dryer.associate = (models)=>{
-        Dryer.belongsTo(models.Branch),{
+        Dryer.belongsTo(models.Branch,{
             foreignKey:{
                 name: 'fk_dryer_branch_id',
                 field: 'branch_id',
                 foreignKeyConstraint: true,
             },
-        }
+        }),
+        Dryer.belongsToMany(models.WashBag,{
+            through: 'dry',
+            foreignKey: {
+              name: 'fk_dry_dry_drying_machine_id',
+              field: 'drying_machine_id',
+            }
+        })
     }
 
     return Dryer;

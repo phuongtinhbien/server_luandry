@@ -21,13 +21,13 @@ export default (sequelize, DataTypes) => {
         buyer : DataTypes.INTEGER
     });
     WashingMachine.associate = (models)=>{
-        WashingMachine.belongsTo(models.Branch),{
+        WashingMachine.belongsTo(models.Branch,{
             foreignKey:{
                 name: 'fk_washing_machine_branch_id',
                 field: 'branch_id',
                 foreignKeyConstraint: true,
             },
-        },
+        }),
         WashingMachine.belongsToMany(models.WashBag,{
             through: 'wash',
             foreignKey: {

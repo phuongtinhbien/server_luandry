@@ -1,7 +1,7 @@
 import models from ".";
 
 export default (sequelize, DataTypes) => {
-    const Wash = sequelize.define('wash', {
+    const PromotionBranch = sequelize.define('promotion_branch', {
         id:{
             type: DataTypes.INTEGER,
             primaryKey:true,
@@ -20,22 +20,22 @@ export default (sequelize, DataTypes) => {
         }
     });
 
-    Wash.associate = (models)=>{
-        Wash.belongsTo(models.WashBag,{
+    PromotionBranch.associate = (models)=>{
+        PromotionBranch.belongsTo(models.Promotion,{
             foreignKey:{
-                name: 'fk_wash_wash_bag_id',
-                field: 'wash_bag_id',
+                name: 'fk_promotion_branch_promotion_id',
+                field: 'promotion_id',
                 foreignKeyConstraint: true,
             },
-        }),
-        Wash.belongsTo(models.WashingMachine,{
+        })
+        PromotionBranch.belongsTo(models.Branch,{
             foreignKey:{
-                name: 'fk_wash_wash_washing_machine_id',
-                field: 'washing_machine_id',
+                name: 'fk_promotion_branch_branch_id',
+                field: 'branch_id',
                 foreignKeyConstraint: true,
             },
         })
         
     };
-    return Wash;
+    return PromotionBranch;
 };

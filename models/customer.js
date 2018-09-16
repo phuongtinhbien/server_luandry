@@ -1,3 +1,4 @@
+import models from ".";
 export default (sequelize, DataTypes) => {
     const Customer = sequelize.define('customer', {
         id:{
@@ -37,5 +38,9 @@ export default (sequelize, DataTypes) => {
         }
 
     });
+
+    Customer.associate = (models)=>{
+        Customer.hasMany(models.Order)
+    }
     return Customer;
   };

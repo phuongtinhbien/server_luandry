@@ -23,6 +23,17 @@ export default (sequelize, DataTypes) => {
         date_start: DataTypes.DATE,
         date_end: DataTypes.DATE,
         promotion_code: DataTypes.STRING(200),
-    })  
+    });
+    
+    Promotion.associate = (models)=>{
+        Promotion.belongsToMany(models.Branch,{
+            through: 'promotion_branch',
+            foreignKey: {
+              name: 'fk_promotion_branch_promotion_id',
+              field: 'promotion_id',
+              foreignKeyConstraint: true,
+            }
+        })
+    }
     return Promotion;
 };

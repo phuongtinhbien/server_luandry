@@ -23,13 +23,13 @@ export default (sequelize, DataTypes) => {
     });
 
     Color.associate=( models) =>{
-        Color.belongsTo(models.ColorGroup),{
+        Color.belongsTo(models.ColorGroup,{
             foreignKey:{
                 name: 'fk_color_color_group_id',
                 field: 'color_group_id',
                 foreignKeyConstraint: true,
             }
-        }
+        })
     }
     return Color;
 };

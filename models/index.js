@@ -30,10 +30,20 @@ const models = {
     WashingMachine: sequelize.import("./washing_machine"),
     WashBag: sequelize.import("./wash_bag"),
     Dryer: sequelize.import("./dryer"),
-    
+    ServiceType: sequelize.import("./service_type"),
+    UnitPrice: sequelize.import("./unit_price"),
+    Order: sequelize.import("./order"),
+    OrderDetail: sequelize.import("./order_detail"),
+    Receipt: sequelize.import("./receipt"),
+    ReceiptDetail: sequelize.import("./receipt_detail"),
+    WashBagDetail: sequelize.import("./wash_bag_detail"),
+    Bill: sequelize.import("./bill"),
+    Bill: sequelize.import("./bill_detail"),
+
 };
 
 Object.keys(models).forEach((modelName) => {
+  
     if ('associate' in models[modelName]){
         models[modelName].associate(models);
     }
