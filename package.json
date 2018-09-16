@@ -31,6 +31,7 @@
     "graphql-sequelize": "^9.0.1",
     "graphql-tools": "^2.2.1",
     "merge-graphql-schemas": "^1.5.4",
+    "path": "^0.12.7",
     "pg": "^7.4.3",
     "presets": "^0.1.0",
     "sequelize": "^4.13.5"

@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
             autoIncrement: true
         },
         customer_no: DataTypes.STRING(200),
-        fullname:{
+        full_name:{
             type: DataTypes.STRING(2000)
         },
         email: {
@@ -40,7 +40,9 @@ export default (sequelize, DataTypes) => {
     });
 
     Customer.associate = (models)=>{
-        Customer.hasMany(models.Order)
+        Customer.hasMany(models.Order),
+        Customer.hasMany(models.Bill),
+        Customer.hasMany(models.Receipt)
     }
     return Customer;
   };
