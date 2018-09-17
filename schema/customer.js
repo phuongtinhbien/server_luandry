@@ -1,6 +1,5 @@
 export default `
   scalar Date
-  scalar Timestamp
   type Customer {
     id: Int!
     username: String
@@ -20,6 +19,7 @@ export default `
     update_by: Int
     create_date: Date
     update_date: Date
+    order: [Order!]
     }
   type Query {
     getCustomer(id: Int!): Customer!
